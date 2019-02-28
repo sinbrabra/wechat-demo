@@ -1,25 +1,27 @@
 package com.lifang.demo.pojo.bean;
 
+import com.google.gson.annotations.SerializedName;
+import org.springframework.util.StringUtils;
+
 /**
  * @author czq
  * @date 2019/2/27
  */
-public class AccessToken {
+public class AccessToken extends ProofTime{
 
     /**
      * 微信发放的access_token,用于微信接口调用
      */
+    @SerializedName("access_token")
     private String accessToken;
 
-    /**
-     * access_token的有效时长，为7200秒(根据文档说明，可能会更改)，过期则需刷新
-     */
-    private Long expiresIn;
+    public AccessToken() {
+    }
 
-    /**
-     * 最近一次的刷新时间戳，用来判断access_token是否过期
-     */
-    private Long refreshTime;
+    public AccessToken(String accessToken, Long expiresIn, Long refreshTime) {
+        super(expiresIn, refreshTime);
+        this.accessToken = accessToken;
+    }
 
     public String getAccessToken() {
         return accessToken;
@@ -29,19 +31,8 @@ public class AccessToken {
         this.accessToken = accessToken;
     }
 
-    public Long getExpiresIn() {
-        return expiresIn;
+    public boolean isNeedRefresh(){
+        return  StringUtils.isEmpty(accessToken) || isDue();
     }
 
-    public void setExpiresIn(Long expiresIn) {
-        this.expiresIn = expiresIn;
-    }
-
-    public Long getRefreshTime() {
-        return refreshTime;
-    }
-
-    public void setRefreshTime(Long refreshTime) {
-        this.refreshTime = refreshTime;
-    }
 }

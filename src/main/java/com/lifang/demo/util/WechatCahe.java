@@ -1,7 +1,7 @@
 package com.lifang.demo.util;
 
 import com.lifang.demo.pojo.bean.AccessToken;
-import com.lifang.demo.pojo.bean.JsapiTicket;
+import com.lifang.demo.pojo.bean.JsApiTicket;
 
 /**
  * @author czq
@@ -18,15 +18,7 @@ public class WechatCahe {
 
         private AccessToken accessToken;
 
-        private JsapiTicket ticket;
-
-        public static Single getInstance(){
-            return INSTANCE;
-        }
-
-        public static Single getINSTANCE() {
-            return INSTANCE;
-        }
+        private JsApiTicket ticket;
 
         public static void setINSTANCE(Single INSTANCE) {
             Single.INSTANCE = INSTANCE;
@@ -40,13 +32,26 @@ public class WechatCahe {
             this.accessToken = accessToken;
         }
 
-        public JsapiTicket getTicket() {
+        public JsApiTicket getTicket() {
             return ticket;
         }
 
-        public void setTicket(JsapiTicket ticket) {
+        public void setTicket(JsApiTicket ticket) {
             this.ticket = ticket;
         }
+
+        public boolean isAccessTokenNeedRetresh(){
+            return accessToken == null || accessToken.isNeedRefresh();
+        }
+
+        public boolean isJsapiTicketNeedRetresh(){
+            return ticket == null || ticket.isNeedRefresh();
+        }
+
+    }
+
+    public static Single getInstance(){
+        return Single.INSTANCE;
     }
 
 }
