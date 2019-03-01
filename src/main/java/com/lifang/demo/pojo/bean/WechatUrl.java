@@ -15,5 +15,5 @@ public class WechatUrl {
     /**
      * 需调用微信js服务器地址
      */
-    public final static String servers = "http://3rfqff.natappfree.cc/scan/qrCode";
+    public final static String SERVERS = "http://kz9px8.natappfree.cc/scan/qrCode";
 }
