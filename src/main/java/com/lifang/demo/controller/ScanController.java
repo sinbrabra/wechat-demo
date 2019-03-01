@@ -28,7 +28,7 @@ public class ScanController {
     public String scanQrCode(Model model){
         model.addAttribute("appId", WechatConfig.getAppId());
         model.addAllAttributes(WechatUtil.sign(WechatUtil.getJsapiTicket(), WechatUrl.SERVERS));
-        return "/scan/scan";
+        return "scan/scan";
     }
 
     /**
@@ -52,7 +52,7 @@ public class ScanController {
     @GetMapping(value = "/passphrase")
     public String passphrase(){
 
-        return "/passphrase/info";
+        return "passphrase/info";
     }
 
 
