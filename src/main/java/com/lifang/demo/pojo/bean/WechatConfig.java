@@ -6,9 +6,9 @@ package com.lifang.demo.pojo.bean;
  */
 public class WechatConfig {
 
-    private final static String appId = "wxcdce85fe39acd77f";
+    private final static String appId = "wx3213404de0c7bade";
 
-    private final static String appSecret = "8ab02e832859b6141acd2b868124b3bb";
+    private final static String appSecret = "bee6d39ddb5635b5d6c108283de466ec";
 
     private final static String token = "lifang";
 
