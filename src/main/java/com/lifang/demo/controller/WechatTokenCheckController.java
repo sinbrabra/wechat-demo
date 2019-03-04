@@ -24,7 +24,7 @@ public class WechatTokenCheckController {
      */
     @RequestMapping("/token")
     @ResponseBody
-    public String cheackTolen(String signature, String timestamp, String nonce, String echostr){
+    public String checkToken(String signature, String timestamp, String nonce, String echostr){
 
         if(signature != null && WechatUtil.checkSignature(signature, timestamp, nonce)){
             return echostr;
