@@ -7,17 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <title>通行码</title>
     <link href="/css/style.min.css?1" type="text/css" rel="stylesheet">
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/qrcode.js"></script>
 </head>
 
 <body>
 <div class="qr_block">
     <div class="title">ADALO门禁</div>
     <div class="sub-title">将二维码对准扫码头即可开门</div>
-    <div class="ewm"><img id="qrCode" src="/images/ewm2.png"></div>
+    <div class="ewm" id="qrCode"></div>
     <div class="refresh"></div>
 </div>
 
-<script src="/js/jquery-3.2.1.min.js"></script>
+
 <script>
     $(function () {
         getQrCode();
@@ -51,7 +53,7 @@
             dataType: 'json',
             success: function (data) {
                 if (data.errorCode == 0) {
-                    $("#qrCode").attr("src", "data:image/png;base64," + data.data);
+                    new QRCode(document.getElementById('qrCode'), data.data.longQrCode);
                 } else {
                     $("#qrCode").attr("src", "/images/default.png");
                     error(data.errMsg);
