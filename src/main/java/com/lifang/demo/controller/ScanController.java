@@ -1,6 +1,7 @@
 package com.lifang.demo.controller;
 
 import com.google.gson.Gson;
+import com.lifang.demo.pojo.bean.LongQrCode;
 import com.lifang.demo.pojo.bean.Response;
 import com.lifang.demo.pojo.bean.WechatConfig;
 import com.lifang.demo.pojo.bean.WechatUrl;
@@ -73,13 +74,13 @@ public class ScanController {
      */
     @GetMapping(value = "/getPassphrase")
     @ResponseBody
-    public Response getPassphrase() {
+    public LongQrCode getPassphrase() {
         String data = OkHttpClientUtil.httpGet("http://service.key1.cn/custom-api/temporary/queryPassCode");
         if (!StringUtils.isEmpty(data)) {
             Gson gson = new Gson();
-            return gson.fromJson(data, Response.class);
+            return gson.fromJson(data, LongQrCode.class);
         }
-        return new Response("网络请求异常");
+        return new LongQrCode("网络请求异常");
     }
 
 }
