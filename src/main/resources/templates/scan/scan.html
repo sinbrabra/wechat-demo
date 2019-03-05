@@ -2,6 +2,7 @@
 <head>
     <title>扫一扫</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-sca e=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript"></script>
     <link href="/css/util/style.min.css" type="text/css" rel="stylesheet">
@@ -39,7 +40,8 @@
                             if (data.errorCode != 0) {
                                 error(data.errMsg);
                             }else{
-                                error("开门成功");
+                                // error("开门成功");
+                                wx.closeWindow();
                             }
                         },error: function (data) {
                             error("网络请求错误");
@@ -76,12 +78,12 @@
             $("body").append(divdom);
             setTimeout(function () {
                 $(".shadow").remove()
-            }, 2000)
+            }, 4000)
         }
 
     </script>
 </head>
-<body>
-<!--<button onclick="test()">确定</button>-->
+<body style="width: 100%">
+<!--<button onclick="error('ssssssssssssssssss')">确定</button>-->
 </body>
 </html>
