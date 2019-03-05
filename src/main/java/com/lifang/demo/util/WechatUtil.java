@@ -73,7 +73,6 @@ public class WechatUtil {
                 "&noncestr=" + nonceStr +
                 "&timestamp=" + timestamp +
                 "&url=" + url;
-        System.out.println("string1:"+string1);
 
         try
         {
