@@ -15,7 +15,21 @@ public class Response<T> {
      */
     private T data;
 
+    public Response(String errMsg, T data) {
+        this.errMsg = errMsg;
+        this.data = data;
+    }
+
     public Response() {
+
+    }
+
+    public static <T> Response success(T data){
+        return new Response("success", data);
+    }
+
+    public static Response fail(String errMsg){
+        return new Response(errMsg);
     }
 
     public Response(String errMsg) {

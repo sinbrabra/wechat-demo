@@ -15,7 +15,7 @@
 <div class="qr_block">
     <div class="title">ADALO门禁</div>
     <div class="sub-title">将二维码对准扫码头即可开门</div>
-    <div class="ewm" id="qrCode"></div>
+    <div class="ewm"><img id="qrCode"></div>
     <div class="refresh"></div>
 </div>
 
@@ -53,8 +53,9 @@
             dataType: 'json',
             success: function (data) {
                 if (data.errorCode == 0) {
-                    $('.ewm').empty()
-                    new QRCode(document.getElementById('qrCode'), data.data.longQrCode);
+                    // $('.ewm').empty()
+                    // new QRCode(document.getElementById('qrCode'), data.data.longQrCode);
+                    $("#qrCode").attr("src", "data:image/png;base64," + data.data);
                 } else {
                     $("#qrCode").attr("src", "/images/default.png");
                     error(data.errMsg);
